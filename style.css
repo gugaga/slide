@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.outer{
+    width:500px;
+    height:340px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.inner{
+    display: flex;
+    position:relative;  
+}
+.inner img{
+    width:100%;
+    transition: all 0.3s;
+    position:absolute;
+    top:0;
+}
+
+/* .inner img:nth-child(1){
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.inner img:nth-child(2){
+    position:absolute;
+    top:0;
+    left:100%;
+}
+
+.inner img:nth-child(3){
+    position:absolute;
+    top:0;
+    left:100%;
+}
+.inner img:nth-child(4){
+    position:absolute;
+    top:0;
+    left:100%;
+}
+.inner img:nth-child(5){
+    position:absolute;
+    top:0;
+    left:100%;
+}
+
+.inner img.right{
+    position:absolute;
+    top:0;
+    left:100%;
+} */
+
+/*简化 */
+.inner img.current{
+    left:0;
+    transform:translateX(0);
+    z-index:1;
+}
+
+.inner img.leave{
+    left:0;
+    transform:translateX(-100%);
+    z-index:1;
+}
+.inner img.enter{
+    left:0;
+    transform:translateX(100%);
+}

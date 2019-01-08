@@ -39,8 +39,28 @@
 //     })
 // },15000)
 
-// ②简化
-let n = 1;
+// 简化
+
+// $('.inner >img:nth-child(1)').addClass('current');
+// $('.inner >img:nth-child(2)').addClass('enter');
+// 简化
+
+
+let n
+initialize()
+setInterval(()=>{
+    makeLeave(getImages(n))
+    .one('transitionend',(e) => {
+        makeEnter($(e.currentTarget))
+    });
+    makeCurrent(getImages(n+1));
+    n += 1;
+},3000);
+
+function getImages(n){
+    return $(`.inner >img:nth-child(${x(n)})`)
+}
+
 function x(n){
     if(n>5){
         n = n%5;
@@ -52,18 +72,27 @@ function x(n){
     return n;
 }
 
+function initialize(){
+    n = 1
+    $(`.inner >img:nth-child(${n})`).addClass('current').siblings().addClass('enter');
+}
 
-$('.inner >img:nth-child(1)').addClass('current');
-$('.inner >img:nth-child(2)').addClass('enter');
-setInterval(()=>{
-    $(`.inner >img:nth-child(${x(n)})`).removeClass('current').addClass('leave')
-    .one('transitionend',(e) => {
-        $(e.currentTarget).removeClass('leave').addClass('enter');
-    });
-    $(`.inner >img:nth-child(${x(n+1)})`).removeClass('enter').addClass('current');
-    n += 1;
-},3000);
-//①简化
+
+//简化
+function makeCurrent($node){
+    $node.removeClass('enter leave').addClass('current');
+}
+
+function makeLeave($node){
+    $node.removeClass('enter current').addClass('leave');
+    return $node;
+}
+
+function makeEnter($node){
+    $node.removeClass('current leave').addClass('enter');
+}
+
+//简化
 // setTimeout(()=>{
 //     $('.inner >img:nth-child(2)').removeClass('current').addClass('leave')
 //     .one('transitionend',(e) => {

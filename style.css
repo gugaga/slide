@@ -9,16 +9,42 @@
     height:340px;
     margin: 20px auto;
     overflow: hidden;
+    position: relative;
 }
 .inner{
     display: flex;
-    position:relative;  
+    transition: all 0.3s;
 }
 .inner img{
     width:100%;
-    transition: all 0.3s;
+}
+.buttonWrapper button{
+    width:40px;
+    height:30px;
+    border:none;
+    border-radius:3px;
+    text-align: center;
+    color:white;
+    background:#e4393c;
+    font-size: 18px;
+    font-weight:bold;
+}
+
+.previous{
     position:absolute;
-    top:0;
+    top:190px;
+    left:370px;
+    font-size:43px;
+    color:white;
+    background:gray;
+}
+.next{
+    position:absolute;
+    right:370px;
+    bottom:134px;
+    font-size:43px;
+    color:white;
+    background:gray;
 }
 
 /* .inner img:nth-child(1){
@@ -56,18 +82,3 @@
 } */
 
 /*简化 */
-.inner img.current{
-    left:0;
-    transform:translateX(0);
-    z-index:1;
-}
-
-.inner img.leave{
-    left:0;
-    transform:translateX(-100%);
-    z-index:1;
-}
-.inner img.enter{
-    left:0;
-    transform:translateX(100%);
-}
